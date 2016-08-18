@@ -1,0 +1,60 @@
+var s_storage = sessionStorage; 
+var l_storage =localStorage;
+
+
+function set(key, value) 
+{
+   this.setItem(key, value);
+   console.log(key,value);
+
+   // based on call this will point either session storage or localstorage
+}
+
+function length()
+{
+
+ console.log(this.length); //returns the number of value stored
+
+}
+
+function get(key)
+{
+
+   console.log(this.getItem(key));
+
+}
+
+function remove(key)
+{
+
+   console.log(this.removeItem(key));
+
+}
+
+function removeall()
+{
+
+   console.log(this.clear());
+   
+}
+
+length.call(s_storage);  
+length.call(l_storage);
+
+set.call(s_storage, "key1","value1"); //function calling through call method...
+set.call(l_storage, "key2","value2");
+
+length.call(s_storage);  // length increases by one
+length.call(l_storage);  // length increases by one
+
+get.call(s_storage,"key1");
+get.call(l_storage,"key2");
+
+remove.call(s_storage,"key1");
+remove.call(l_storage,"key2");
+
+removeall.call(s_storage);
+removeall.call(l_storage);
+
+length.call(s_storage);  //now length will be 0 since we have executed removeall before this function    
+length.call(l_storage);  //now length will be 0 since we have executed removeall before this function
