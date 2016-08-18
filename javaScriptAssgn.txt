@@ -44,8 +44,8 @@ length.call(l_storage);
 set.call(s_storage, "key1","value1"); //function calling through call method...
 set.call(l_storage, "key2","value2");
 
-length.call(s_storage);  // length increases by one
-length.call(l_storage);  // length increases by one
+length.call(s_storage);  // length increases by one because set was called before
+length.call(l_storage);  // length increases by one because set was called before
 
 get.call(s_storage,"key1");
 get.call(l_storage,"key2");
