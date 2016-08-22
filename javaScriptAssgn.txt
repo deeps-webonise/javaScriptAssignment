@@ -1,7 +1,3 @@
-var s_storage = sessionStorage; 
-var l_storage =localStorage;
-
-
 function set(key, value) 
 {
    this.setItem(key, value);
@@ -38,23 +34,71 @@ function removeall()
    
 }
 
-length.call(s_storage);  
-length.call(l_storage);
 
-set.call(s_storage, "key1","value1"); //function calling through call method...
-set.call(l_storage, "key2","value2");
+//bind is used for later invocation of function
+//bind stores the function in a variable
+// _s is used for session
+// _l is used for local
 
-length.call(s_storage);  // length increases by one because set was called before
-length.call(l_storage);  // length increases by one because set was called before
+var length_s=length.bind(sessionStorage);
+var length_l=length.bind(localStorage);
 
-get.call(s_storage,"key1");
-get.call(l_storage,"key2");
+var set_s=set.bind(sessionStorage);
+var set_l=set.bind(localStorage);
 
-remove.call(s_storage,"key1");
-remove.call(l_storage,"key2");
+var get_s=get.bind(sessionStorage);
+var get_l=get.bind(localStorage,"key2");
 
-removeall.call(s_storage);
-removeall.call(l_storage);
+var remove_s=remove.bind(sessionStorage);
+var remove_l=remove.bind(localStorage);
 
-length.call(s_storage);  //now length will be 0 since we have executed removeall before this function    
-length.call(l_storage);  //now length will be 0 since we have executed removeall before this function
+var removeall_s=removeall.bind(sessionStorage);
+var removeall_l=removeall.bind(localStorage);
+
+
+//Now calling the functions
+length_s();
+length_l();
+
+set_s("key1","value1");
+set_l("key2","value2");
+
+length_s();
+length_l();
+
+get_s("key1");
+get_l("key2");
+
+remove_s("key1");
+remove_l("key2");
+
+length_s();
+length_l();
+
+removeall_s();
+removeall_l();
+
+length_s();
+length_l();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
